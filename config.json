@@ -1,0 +1,21 @@
+{
+    "params":
+    {
+        "local_server":"True",
+        "local_uri":"mysql+pymysql://root:@localhost/test",
+        "prod_uri":"mysql+pymysql://root:@localhost/test",
+        "fb_url":"https://www.facebook.com/test",
+        "twitter_url":"https://twitter.com/login/test",
+        "github_url":"https://github.com/test",
+        "blog_name":"The Coding Thunder New Site",
+        "tag_line":"A Blog liked by programmers",
+        "gmail_user":"mygamilemailid",
+        "gmail_pwd":"pwd",
+        "about_text":"Welcome! You are about to start on a journey to learn how to create web applications with Python and the Flask framework. The video above will give you an overview of the contents of this tutorial. In this first chapter, you are going to learn how to set up a Flask project. By the end of this chapter you are going to have a simple Flask web application running on your computer!",
+        "posts_per_page": 3,
+        "login_image":"login.png",
+        "adm_user":"arti",
+        "adm_pwd":"Blog",
+        "upload_file_path" :"D:\\python_framework\\flask\\static\\uploaded_files"
+    }
+}
