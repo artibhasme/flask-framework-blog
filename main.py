@@ -111,7 +111,7 @@ def dashboad():
 @app.route("/",methods=['GET','POST'])
 def home():
     #pagination logic
-    posts = Posts.query.filter_by().all()
+    posts = Posts.query.filter_by().order_by(Posts.date.desc()).all() #sorted with date, latest to show first
     last = ceil(len(posts)/int(params['posts_per_page']))
     page = request.args.get('page')
     print("page here1", page)
@@ -229,7 +229,7 @@ def edit(srno):
     posts = Posts.query.filter_by(srno=srno).first()
 
     #return render_template("edit.html",params=params,srno=srno)
-    return render_template("edit.html",params=params,posts=posts)
+    return render_template("edit.html",params=params,posts=posts,srno=srno)
 
 '''
         posts = Posts.query.all()        
