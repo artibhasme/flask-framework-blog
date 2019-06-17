@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 {% block body %}
   <!-- Page Header -->
-  <header class="masthead" style="background-image: url('{{ url_for('static',filename='img/contact-bg.jpg') }}')">
+  <header class="masthead mb-0" style="background-image: url('{{ url_for('static',filename='img/contact-bg.jpg') }}')">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
@@ -14,6 +14,26 @@
       </div>
     </div>
   </header>
+<!--Message flashing starts here-->
+{% with messages = get_flashed_messages(with_categories=true) %} <!--leave blank if category os not required for aal flashing msgs-->
+
+{% if messages %}
+
+{% for cat,msg in messages %}
+<div class="alert alert-{{cat}} alert-dismissible fade show mb-0" role="alert">
+    {{msg}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endfor %}
+
+{% endif %}
+
+{% endwith %}
+
+<!--message flashing ends here-->
+
 
   <!-- Main Content -->
   <div class="container">

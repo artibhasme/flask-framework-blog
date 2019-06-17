@@ -1,4 +1,4 @@
-from flask import Flask,render_template,request,session,redirect
+from flask import Flask,render_template,request,session,redirect, flash
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import json,os
@@ -110,6 +110,9 @@ def dashboad():
 
 @app.route("/",methods=['GET','POST'])
 def home():
+    flash("subscribe to 'coding thunder' ")
+    flash("Second Flashing msg with category success, should show green signal ",'success')
+    flash("Showing Category as danger-red ",'danger')
     #pagination logic
     posts = Posts.query.filter_by().order_by(Posts.date.desc()).all() #sorted with date, latest to show first
     last = ceil(len(posts)/int(params['posts_per_page']))
@@ -177,7 +180,7 @@ def contact():
         
         entry = Contact(name=name,email=email,phone=phone,msg=msg,date=datetime.now())
         db.session.add(entry)
-        
+        '''
         #send mail before commit the entry in db
         msg = Message(subject="hello",
                         sender=app.config.get("MAIL_USERNAME"),
@@ -186,13 +189,14 @@ def contact():
 
         mail.send(msg)
         '''
+        '''
         mail.send_message("New message from " + name,sender=email,
                             recipients=[params['gmail_user']],
                             body=msg + '\n' + phone)
         #mail server giving sender refused error
 '''
         db.session.commit()
-
+        flash("Thanks for submitting your details, we will get back to you soon", 'success')
         #sending mail
         #mail.send_message("New message from " + name,sender=email,recipients=[params['gmail_user']],body=msg + '\n' + phone)
         #mail server giving sender refused error
